@@ -1,4 +1,4 @@
-# Mithqal Currency Calculator Static Version
+# Mithqál Currency Calculator Static Version
 
 A simplified static version of my other mithqal calculator used to convert (Baháʼí Mithqáls of Gold/Silver<->Currency) applicable to all ISO 4217 certified currencies.
 Languages used: HTML, CSS, JavaScript and TypeScript (Removed Server).
