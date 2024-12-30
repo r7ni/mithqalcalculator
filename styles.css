@@ -1,0 +1,350 @@
+/* In the love I bear to Thee, O my Lord, 
+my heart longeth for Thee with a longing such as no heart hath known. 
+Here am I with my body between Thy hands, and my spirit before Thy face. */
+.background {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://img.stablecog.com/insecure/1920w/aHR0cHM6Ly9iLnN0YWJsZWNvZy5jb20vOGE5NzQyOWItODUyOC00MDFiLTk0MTUtZTdmMzYzNjAzNmJiLmpwZWc.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(11px); 
+  z-index: -1; 
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+p.a {
+  font-size: 0.875em;
+  font-stretch: 200%;
+  font-style: italic;
+  user-select: none;
+}
+p.b {
+  margin-top: -15px;
+  font-size: 0.7em;
+  font-stretch: 200%;
+  font-weight: bold;
+  font-style: italic;
+  user-select: none;
+}
+p.d {
+  font-size: 0.7em;
+  font-stretch: 200%;
+  font-weight: bold;
+  font-style: italic;
+  user-select: none;
+}
+a.aboutlink {
+  font-size: 0.7em;
+  font-stretch: 200%;
+  font-weight: bold;
+  font-style: italic;
+  user-select: none;
+  color: #000;
+}
+
+h2 {
+  user-select: none;
+}
+label.c {
+  font-style: italic;
+  user-select: none;
+}
+/* Calculator Container */
+.calculator {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    
+    
+}
+
+.calculator h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+.form-group select:hover {
+  background-color: #f0f0f0; 
+  border-color: #007BFF; 
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.form-group select option:hover {
+  background-color: #696969; /* Highlighted background color */
+  color: #fff; /* Text color for hover */
+}
+
+
+
+.radio-inputs {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 0.5rem;
+    background-color: #eee;
+    box-sizing: border-box;
+    box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+    padding: 0.25rem;
+    width: fill;
+    font-size: 14px;
+    align-items: center;
+    user-select: none;
+    justify-content: center;
+  }
+  
+  
+  .radio-inputs .radio {
+    flex: 1 1 auto;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .radio-inputs .radio input {
+    display: none;
+  }
+  
+  .radio-inputs .radio .name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.5rem 0;
+    color: rgba(51, 65, 85, 1);
+    transition: all 0.15s ease-in-out;
+  }
+  
+  .radio-inputs .radio input:checked + .name {
+    background-color: #fff;
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Hover effect */
+  .radio-inputs .radio:hover .name {
+    background-color: rgba(255, 255, 255, 0.5);
+    align-items: center;
+  }
+  
+  /* Animation */
+  .radio-inputs .radio input:checked + .name {
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: select 0.3s ease;
+  }
+  
+  @keyframes select {
+    0% {
+      transform: scale(0.95);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Radio button source was from a video online i modified it and used it here */
+  .radio-inputs .radio input:checked + .name::before,
+  .radio-inputs .radio input:checked + .name::after {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #8a8a89;
+    opacity: 0;
+    animation: particles 0.5s ease forwards;
+  }
+  
+  .radio-inputs .radio input:checked + .name::before {
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .radio-inputs .radio input:checked + .name::after {
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  @keyframes particles {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(-50%) translateY(var(--direction));
+    }
+  }
+  
+  .radio-inputs .radio input:checked + .name::before {
+    --direction: -10px;
+  }
+  
+  .radio-inputs .radio input:checked + .name::after {
+    --direction: 10px;
+  }
+
+  #customRateContainer {
+    display: none;
+
+  }
+
+  .calculator h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+
+  /* Tom Select input field so a user can search the input field. It works. Let it be lol. */
+  .ts-control {
+    background-color: #fff !important;
+    border: 1px solid #ccc !important;
+    border-radius: 25px;
+  }
+  .ts-dropdown {
+    background-color: #fff !important;
+    border: 1px solid #ccc;
+    z-index: 9999;
+  }
+  .ts-dropdown [data-selectable]:hover {
+    background-color: #f0f0f0;
+    color: #000;
+  }
+
+.ts-dropdown {
+  position: absolute !important;
+  z-index: 9999;
+  max-height: 240px; 
+  overflow-y: auto;  
+}
+
+.tomselect-control,
+.ts-control {
+  font-family: "Arial", sans-serif;  
+  font-size: 14px;                   
+  line-height: 1.3; 
+  border-radius: 6px !important; 
+  border: #ccc;
+}
+/* this was needed to update the font of the field at start */
+.ts-control .item {
+  font-family: "Arial", sans-serif;  
+  font-size: 14px;                   
+  line-height: 1.3; 
+}
+
+.ts-dropdown .option,
+.ts-dropdown .item {
+  font-family: "Arial", sans-serif; 
+  font-size: 14px;
+  line-height: 1.3;
+
+}
+
+
+
+
+
+.centered-box {
+  background-color: #fff;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+
+
+
+p.aboutpage { /* Paragraph in about page */
+  font-size: 1em;
+  font-stretch: 200%;
+  font-weight: 600;
+  font-style: normal;
+  user-select: none;
+  text-align: left;
+  line-height: 1.5em;
+}
+
+
+
+
+
+@media (max-width: 600px) {
+  .calculator {
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+  }
+
+  .form-group {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .h2 {
+    font-size: 1.2rem; /* Adjust to your preference */
+  }
+}
