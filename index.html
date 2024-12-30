@@ -122,20 +122,33 @@
   </script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const ts = new TomSelect('#currencySelect', {
-        maxItems: 1,
-        closeAfterSelect: true,
-        dropdownParent: 'body'
-      });
-
-      ts.on('change', handleCurrencyChange);
-
-      <!-- NEW: auto blur on item_add -->
-      ts.on('item_add', () => {
-        ts.blur();
-      });
+ document.addEventListener('DOMContentLoaded', function() {
+    const ts = new TomSelect('#currencySelect', {
+      maxItems: 1,
+      closeAfterSelect: true,
+      dropdownParent: 'body'
     });
+    ts.on('change', handleCurrencyChange);
+    // Blur on add item
+    ts.on('item_add', () => {
+      ts.blur();
+    });
+
+    // Blur on enter/return
+    document.getElementById("mithqals").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.target.blur();
+      }
+    });
+
+    // Blur on enter/return
+    document.getElementById("money").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.target.blur();
+      }
+    });
+  });
+    
 
     function handleCurrencyChange() {
       const currency = document.getElementById("currencySelect").value;
