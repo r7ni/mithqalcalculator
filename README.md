@@ -1,9 +1,7 @@
 # Mithqál Currency Calculator Static Version
 
-A simplified static version of my other full stack mithqál calculator used to convert 
-(Baháʼí Mithqáls of Gold/Silver<->Currency) applicable to all ISO 4217 certified currencies.
-Languages used: HTML, CSS, JavaScript and TypeScript ( TypeScript Removed in Static version).
-
+A simplified static version of my other full stack mithqál calculator used to convert (Baháʼí Mithqáls of Gold/Silver<->Currency) applicable to all ISO 4217 certified currencies.
+Languages used: HTML, CSS, JavaScript and TypeScript (Removed in Static version).
 ![Preview of Calculator](image.png)
 
 ## Features
@@ -23,7 +21,7 @@ Languages used: HTML, CSS, JavaScript and TypeScript ( TypeScript Removed in Sta
 
 ### Files
 1. **`script.js`:** Handles the front-end logic for conversions.
-2. **`favicon.ico`:** Website Icon.
+2. **`favicon`:** Website Icon.
 3. **`image.png`:** Image of the webpage for the README.
 4. **`index.html`:** The main page that holds the calculator process.
 5. **`style.css`:** Pure CSS styling for the HTML.
