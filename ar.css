@@ -1,6 +1,24 @@
 /* In the love I bear to Thee, O my Lord, 
 my heart longeth for Thee with a longing such as no heart hath known. 
 Here am I with my body between Thy hands, and my spirit before Thy face. */
+@font-face {
+  font-family: 'arabic1';
+  src: url('arabic1.TTF');
+}
+
+.noteng {
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.noteng1 { /* in about page bottom*/
+  font-size: 15px;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #000;
+}
+
 .background {
   position: fixed; 
   top: 0;
@@ -14,9 +32,7 @@ Here am I with my body between Thy hands, and my spirit before Thy face. */
   filter: blur(11px); 
   z-index: -1; 
 }
-.noteng {
-  font-size: 15px;
-}
+
 .bottombox {
   display: flex;
   justify-content: space-evenly; /* Even spacing between items */
@@ -61,35 +77,52 @@ body {
   justify-content: center;
   min-height: 100vh;
 }
-p.a {
-  font-size: 0.875em;
+p.a { /*ALLAHUABHA*/
+  font-size: 1.05em;
   font-stretch: 200%;
   font-style: italic;
   user-select: none;
 }
 p.b {
   margin-top: -15px;
-  font-size: 0.7em;
+  font-size: 0.9em;
   font-stretch: 200%;
-  font-weight: bold;
-  font-style: italic;
-  user-select: none;
-}
-p.d {
-  font-size: 0.7em;
-  font-stretch: 200%;
-  font-weight: bold;
   font-style: italic;
   user-select: none;
 }
 
-h2 {
-  user-select: none;
-}
-label.c {
+p.d {
+  font-size: 0.8em;
+  font-stretch: 200%;
   font-style: italic;
   user-select: none;
 }
+
+h1 {
+  font-family: 'arabic1';
+  margin-bottom: 20px;
+  font-size: 65px;
+  font-weight: 580;
+  color: #333;
+  margin: -10px;
+  letter-spacing: -0.8px;
+}
+.h1title {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: -20px;
+  align-items: center;
+  margin-top: -40px;
+  user-select: none;
+}
+p.pt{
+  font-size: 30px;
+  font-style: normal !important;
+}
+p.guidance{
+  text-align: left;
+}
+
 /* Calculator Container */
 .calculator {
     max-width: 400px;
@@ -104,25 +137,21 @@ label.c {
     
 }
 
-.calculator h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-}
-
 
 .form-group {
     margin-bottom: 20px;
-    text-align: left;
+    text-align: right;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 17px;
     color: #333;
     cursor: pointer;
+    user-select: none;
+    text-align: right;
 }
 .form-group select:hover {
   background-color: #f0f0f0; 
@@ -141,6 +170,7 @@ label.c {
     appearance: none; 
     -webkit-appearance: none;
     -moz-appearance: none;
+    text-align: right;
 }
 .form-group select option:hover {
   background-color: #696969; /* Highlighted background color */
@@ -186,6 +216,7 @@ label.c {
     padding: 0.5rem 0;
     color: rgba(51, 65, 85, 1);
     transition: all 0.15s ease-in-out;
+    font-size: 17px;
   }
   
   .radio-inputs .radio input:checked + .name {
@@ -272,11 +303,6 @@ label.c {
 
   }
 
-  .calculator h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-  }
 
   /* Tom Select input field so a user can search the input field. It works. Let it be lol. */
   .ts-control {
@@ -298,7 +324,9 @@ label.c {
   position: absolute !important;
   z-index: 9999;
   max-height: 240px; 
-  overflow-y: auto;  
+  overflow-y: auto; 
+  text-align: right; 
+
 }
 
 .tomselect-control,
@@ -308,6 +336,7 @@ label.c {
   line-height: 1.3; 
   border-radius: 6px !important; 
   border: #ccc;
+  
 }
 /* this was needed to update the font of the field at start */
 .ts-control .item {
@@ -321,9 +350,17 @@ label.c {
   font-family: "Arial", sans-serif; 
   font-size: 14px;
   line-height: 1.3;
+  text-align: right; 
+
 
 }
 
+
+
+#currencySelect {
+  direction: rtl; /* Set the text direction to right-to-left */
+  text-align: right; /* Align text to the right */
+}
 
 
 
@@ -337,17 +374,22 @@ label.c {
   border-radius: 8px;
 }
 
-
-
-
-p.aboutpage { /* Paragraph in about page */
-  font-size: 0.8em;
+p.guidance{
   font-stretch: 200%;
-  font-weight: 600;
-  font-style: normal;
+  font-weight: bold;
   text-align: left;
   line-height: 1.5em;
 }
+
+
+p.aboutpage { /* Paragraph in about page */
+  font-size: 1em;
+  font-stretch: 200%;
+  font-weight: bold;
+  text-align: right;
+  line-height: 1.5em;
+}
+
 p.divider { /* morse code divider in about page */
   font-size: 0.8em;
   font-weight: 600;
@@ -380,7 +422,21 @@ p.divider { /* morse code divider in about page */
     margin-bottom: 8px;
   }
 
-  .h2 {
+  .h1 {
     font-size: 1.2rem; /* Adjust to your preference */
   }
+}
+
+
+.ts-control {
+  background-image: none !important; /* Remove background arrow */
+}
+
+.ts-control::after {
+  display: none !important; /* Ensure pseudo-element is hidden */
+  content: none !important; /* Remove any generated content */
+}
+
+.ts-control.selectized {
+  padding-right: 0 !important; /* Adjust padding if extra space is created */
 }

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" 
   content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
   <!-- i hope you have a great day! -->
-  <title>mithqál currency calculator</title>
-  <meta name="description" content="A two-way calculator to convert between Bahá'í mithqáls and world currencies.">
+  <title>ماشین حساب مثقال و ارزهای نقدی</title>
+  <meta name="description" content="ماشین حساب دوطرفه - تبدیل بین مثقال بهائی و ارزهای نقدی">  
   
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="fa.css">
   <link 
     rel="stylesheet" 
     href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.bootstrap5.min.css"
@@ -39,119 +39,130 @@
 <body>
   <div class="background"></div>
   <div class="calculator">
-    <p class="a">Alláh'u'Abhá</p>
-    <h2 class="h2">mithqál ⇄ currency</h2>
-    <p class="b">two-way calculator</p> 
+    <p class="a">الله أبهی</p>
+    <div class="h1title">
+    <h1 class="left">
+      ارز 
+    </h1>
+        <p class="pt">⇄</p>  
+        <h1 class="right" >
+            مثقال
+    </h1>
+    </div>
+    <p class="b">
+      ماشین‌ حساب دوطرفه      
+    </p> 
     <div class="form-group">
-      <label class="c" for="metalType">metal:</label>
+      <label class="c" for="metalType">:فـلـز</label>
       <div class="radio-inputs">
         <label class="radio">
           <input type="radio" name="metalType" value="gold" checked>
-          <span class="name">Gold</span>
+          <span class="name">طـلا</span>
         </label>
         <label class="radio">
           <input type="radio" name="metalType" value="silver">
-          <span class="name">Silver</span>
+          <span class="name">نقـره</span>
         </label>
       </div>
     </div>
     <div class="form-group">
-      <label for="mithqals"><i># in mithqáls:</i></label>
+      <label for="mithqals">:وزن در مثقـال</label>
       <input 
         type="text" 
         id="mithqals" 
-        placeholder="enter the amount of mithqáls" 
+        placeholder="مقدار مثقال را وارد کنید"
         oninput="formatMithqals(this); calculateMoneyFromMithqals()"
       />
     </div>
     <div class="form-group">
-      <label for="money"><i># in currency:</i></label>
+      <label for="money">:مقـدار ارز</label>
       <input 
         type="text" 
         id="money" 
-        placeholder="enter the amount of currency" 
+        placeholder="مقدار ارز را وارد کنید"
         oninput="formatMoney(this); calculateMithqalsFromMoney()"
-      />
+        />
     </div>
     <div class="form-group">
-      <label for="currencySelect"><i>currency:</i></label>
-      <select id="currencySelect" placeholder="Select or type to search">
-        <option value="USD">USD – United States Dollar</option>
-        <option value="EUR">EUR – Euro</option>
-        <option value="GBP">GBP – British Pound</option>
-        <option value="CAD">CAD – Canadian Dollar</option>
-        <option value="CUSTOM">CUSTOM – Set your own rate</option>
-        <option disabled="true" value="none">.---- ----.  .---- ----.  .---- ----.  .---- ----.  .---- ----.</option>
-        <option value="AFN">AFN – Afghan Afghani</option>
-        <option value="ARS">ARS – Argentine Peso</option>
-        <option value="AUD">AUD – Australian Dollar</option>
-        <option value="AZN">AZN – Azerbaijani Manat</option>
-        <option value="BHD">BHD – Bahraini Dinar</option>
-        <option value="BDT">BDT – Bangladeshi Taka</option>
-        <option value="BOL">BOL – Bolivian Boliviano</option>
-        <option value="BRL">BRL – Brazilian Real</option>
-        <option value="CDF">CDF – Congolese Franc</option>
-        <option value="CLP">CLP – Chilean Peso</option>
-        <option value="CNY">CNY – Chinese Yuan</option>
-        <option value="COP">COP – Colombian Peso</option>
-        <option value="CZK">CZK – Czech Koruna</option>
-        <option value="DKK">DKK – Danish Krone</option>
-        <option value="DZD">DZD – Algerian Dinar</option>
-        <option value="EGP">EGP – Egyptian Pound</option>
-        <option value="ETB">ETB – Ethiopian Birr</option>
-        <option value="FJD">FJD – Fijian Dollar</option>
-        <option value="GEL">GEL – Georgian Lari</option>
-        <option value="HKD">HKD – Hong Kong Dollar</option>
-        <option value="HUF">HUF – Hungarian Forint</option>
-        <option value="IDR">IDR – Indonesian Rupiah</option>
-        <option value="ILS">ILS – Israeli New Shekel</option>
-        <option value="IQD">IQD – Iraqi Dinar</option>
-        <option value="IRR">IRR – Iranian Rial</option>
-        <option value="ISK">ISK – Icelandic Krona</option>
-        <option value="JOD">JOD – Jordanian Dinar</option>
-        <option value="JPY">JPY – Japanese Yen</option>
-        <option value="KES">KES – Kenyan Shilling</option>
-        <option value="KWD">KWD – Kuwaiti Dinar</option>
-        <option value="MAD">MAD – Moroccan Dirham</option>
-        <option value="MXN">MXN – Mexican Peso</option>
-        <option value="MYR">MYR – Malaysian Ringgit</option>
-        <option value="NAD">NAD – Namibian Dollar</option>
-        <option value="NGN">NGN – Nigerian Naira</option>
-        <option value="NOK">NOK – Norwegian Krone</option>
-        <option value="NPR">NPR – Nepalese Rupee</option>
-        <option value="NZD">NZD – New Zealand Dollar</option>
-        <option value="OMR">OMR – Omani Rial</option>
-        <option value="PGK">PGK – Papua New Guinean Kina</option>
-        <option value="PHP">PHP – Philippine Peso</option>
-        <option value="PKR">PKR – Pakistani Rupee</option>
-        <option value="PLN">PLN – Polish Zloty</option>
-        <option value="QAR">QAR – Qatari Riyal</option>
-        <option value="RUB">RUB – Russian Ruble</option>
-        <option value="SAR">SAR – Saudi Riyal</option>
-        <option value="SGD">SGD – Singapore Dollar</option>
-        <option value="THB">THB – Thai Baht</option>
-        <option value="TMT">TMT – Turkmenistan Manat</option>
-        <option value="TRY">TRY – Turkish Lira</option>
-        <option value="TND">TND – Tunisian Dinar</option>
-        <option value="TZS">TZS – Tanzanian Shilling</option>
-        <option value="UGX">UGX – Ugandan Shilling</option>
-        <option value="UAH">UAH – Ukrainian Hryvnia</option>
-        <option value="UZS">UZS – Uzbekistani Som</option>
-        <option value="VND">VND – Vietnamese Dong</option>
-        <option value="VUV">VUV – Vanuatu Vatu</option>
-        <option value="ZAR">ZAR – South African Rand</option>
-        <option value="ZMW">ZMW – Zambian Kwacha</option>  
-
+        <label for="currencySelect">:ارز</label>
+        <select id="currencySelect" placeholder="Select or type to search">
+          <option value="USD">USD – دلار آمریکایی</option>
+          <option value="EUR">EUR – یورو</option>
+          <option value="GBP">GBP – پوند استرلینگ</option>
+          <option value="CAD">CAD – دلار کانادایی</option>
+          <option value="CUSTOM">CUSTOM – نرخ تبدیل خود را تنظیم کنید</option>
+          <option value="IRR">IRR – ریال ایران</option>
+          <option value="AFN">AFN – افغانی افغانستان</option>
+          <option value="AZN">AZN – منات آذربایجان</option>
+          <option value="TRY">TRY – لیره ترکیه</option>
+          <option disabled="true" value="none">.---- ----.  .---- ----.  .---- ----.  .---- ----.  .---- ----.</option>
+          
+          <option value="ARS">ARS – پزو آرژانتین</option>
+          <option value="AUD">AUD – دلار استرالیا</option>
+          <option value="BHD">BHD – دینار بحرین</option>
+          <option value="BDT">BDT – تاکا بنگلادش</option>
+          <option value="BOL">BOL – بولیویانو بولیوی</option>
+          <option value="BRL">BRL – رئال برزیل</option>
+          <option value="CDF">CDF – فرانک کنگو</option>
+          <option value="CLP">CLP – پزو شیلی</option>
+          <option value="CNY">CNY – یوان چین</option>
+          <option value="COP">COP – پزو کلمبیا</option>
+          <option value="CZK">CZK – کرون چک</option>
+          <option value="DKK">DKK – کرون دانمارک</option>
+          <option value="DZD">DZD – دینار الجزایر</option>
+          <option value="EGP">EGP – پوند مصر</option>
+          <option value="ETB">ETB – بیر اتیوپی</option>
+          <option value="FJD">FJD – دلار فیجی</option>
+          <option value="GEL">GEL – لاری گرجستان</option>
+          <option value="HKD">HKD – دلار هنگ‌کنگ</option>
+          <option value="HUF">HUF – فورینت مجارستان</option>
+          <option value="IDR">IDR – روپیه اندونزی</option>
+          <option value="ILS">ILS – شِکِل جدید اسرائیل</option>
+          <option value="IQD">IQD – دینار عراق</option>
+          <option value="ISK">ISK – کرون ایسلند</option>
+          <option value="JOD">JOD – دینار اردن</option>
+          <option value="JPY">JPY – ین ژاپن</option>
+          <option value="KES">KES – شیلینگ کنیا</option>
+          <option value="KWD">KWD – دینار کویت</option>
+          <option value="MAD">MAD – درهم مراکش</option>
+          <option value="MXN">MXN – پزو مکزیک</option>
+          <option value="MYR">MYR – رینگیت مالزی</option>
+          <option value="NAD">NAD – دلار نامیبیا</option>
+          <option value="NGN">NGN – نایرا نیجریه</option>
+          <option value="NOK">NOK – کرون نروژ</option>
+          <option value="NPR">NPR – روپیه نپال</option>
+          <option value="NZD">NZD – دلار نیوزیلند</option>
+          <option value="OMR">OMR – ریال عمان</option>
+          <option value="PGK">PGK – کینا پاپوآ گینه نو</option>
+          <option value="PHP">PHP – پزو فیلیپین</option>
+          <option value="PKR">PKR – روپیه پاکستان</option>
+          <option value="PLN">PLN – زلوتی لهستان</option>
+          <option value="QAR">QAR – ریال قطر</option>
+          <option value="RUB">RUB – روبل روسیه</option>
+          <option value="SAR">SAR – ریال سعودی</option>
+          <option value="SGD">SGD – دلار سنگاپور</option>
+          <option value="THB">THB – بات تایلند</option>
+          <option value="TMT">TMT – منات ترکمنستان</option>
+          <option value="TND">TND – دینار تونس</option>
+          <option value="TRY">TRY – لیره ترکیه</option>
+          <option value="TZS">TZS – شیلینگ تانزانیا</option>
+          <option value="UAH">UAH – هریونا اوکراین</option>
+          <option value="UGX">UGX – شیلینگ اوگاندا</option>
+          <option value="UZS">UZS – سوم ازبکستان</option>
+          <option value="VND">VND – دانگ ویتنام</option>
+          <option value="VUV">VUV – واتو وانواتو</option>
+          <option value="ZAR">ZAR – رند آفریقای جنوبی</option>
+          <option value="ZMW">ZMW – کواچا زامبیا</option>
       </select>
     </div>
 
     <!-- The custom rate container def=hidden -->
     <div class="form-group" id="customRateContainer">
-      <label for="customRate"><i>1 usd = ?</i></label>
+      <label for="customRate">یک دلار = ؟</label>
       <input 
         type="text" 
         id="customRate" 
-        placeholder="enter your custom rate"
+        placeholder="نرخ ارز خود را وارد کنید"
         oninput="formatMoney(this); customRateChanged();"
       />
     </div>
@@ -159,8 +170,8 @@
 
     <div class="bottombox">
 
-      <a href="fa.html" class="noteng"><i>فارسی</i></a>
-      <a href="about.html" class="aboutlink">about</a>
+      <a href="index.html" class="aboutlink"><i>english</i></a>
+      <a href="fa-about.html" class="noteng"><i>اطلاعات بیشتر</i></a>
       <a href="ar.html" class="noteng"><i>عربي</i></a>
       
     </div>
@@ -176,7 +187,8 @@
     const ts = new TomSelect('#currencySelect', {
       maxItems: 1,
       closeAfterSelect: true,
-      dropdownParent: 'body'
+      dropdownParent: 'body',
+      rtl: true //changes to right to left
     });
     ts.on('change', handleCurrencyChange);
     // Blur on add item
