@@ -10,10 +10,11 @@ Here am I with my body between Thy hands, and my spirit before Thy face. */
   background-image: url('https://img.stablecog.com/insecure/1920w/aHR0cHM6Ly9iLnN0YWJsZWNvZy5jb20vOGE5NzQyOWItODUyOC00MDFiLTk0MTUtZTdmMzYzNjAzNmJiLmpwZWc.webp');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat; /* Ensure the image repeats */
   filter: blur(11px); 
   z-index: -1; 
 }
+
 .noteng {
   font-size: 15px;
 }
