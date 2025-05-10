@@ -5,9 +5,35 @@
   <meta name="viewport" 
   content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
   <!-- i hope you have a great day! -->
-  <title>كالكوليتر المثقال والعملة النقدية</title>
+  <title>
+    كالكوليتر المثقال البهائي والعملة النقدية
+  </title>
   <meta name="description" content="آلة حاسبة ثنائية-كالكوليتر لتحويل بين المثقال البهائي والعملات النقدية">
   
+
+  <link rel="canonical" href="https://mithqalcalculator.com/ar.html">
+
+<link rel="alternate" hreflang="x-default" href="https://mithqalcalculator.com/index.html">
+<link rel="alternate" hreflang="en"        href="https://mithqalcalculator.com/index.html">
+<link rel="alternate" hreflang="fa"        href="https://mithqalcalculator.com/fa.html">
+<link rel="alternate" hreflang="ar"        href="https://mithqalcalculator.com/ar.html">
+
+<meta property="og:type"        content="website">
+<meta property="og:title"       content="كالكوليتر المثقال البهائي والعملة النقدية">
+<meta property="og:description" content="آلة حاسبة ثنائية-كالكوليتر لتحويل بين المثقال البهائي والعملات النقدية">
+<meta property="og:url"         content="https://mithqalcalculator.com/ar.html">
+<meta property="og:image"       content="https://mithqalcalculator.com/og-preview.jpg">
+<meta property="og:image:alt"   content="لقطة لحاسبة المثقال">
+<meta property="og:locale"      content="ar_SA">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fa_IR">
+
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="كالكوليتر المثقال البهائي والعملة النقدية">
+<meta name="twitter:description" content="آلة حاسبة ثنائية-كالكوليتر لتحويل بين المثقال البهائي والعملات النقدية">
+<meta name="twitter:image"       content="https://mithqalcalculator.com/og-preview.jpg">
+
+
   <link rel="stylesheet" href="ar.css">
   <link 
     rel="stylesheet" 
@@ -33,7 +59,10 @@
   <meta name="msapplication-square150x150logo" content="favicon/mstile-150x150.png" />
   <meta name="msapplication-wide310x150logo" content="favicon/mstile-310x150.png" />
   <meta name="msapplication-square310x310logo" content="favicon/mstile-310x310.png" />
-  
+  <!-- Speed up TLS + DNS for the two live‑rate APIs -->
+<link rel="preconnect" href="https://api.gold-api.com">
+<link rel="preconnect" href="https://hexarate.paikama.co">
+
 </head>
 
 <body>
@@ -179,167 +208,7 @@
   <script 
     src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js">
   </script>
+<script type="module" src="script.js" defer></script>
 
-  <script>
- document.addEventListener('DOMContentLoaded', function() {
-    const ts = new TomSelect('#currencySelect', {
-      maxItems: 1,
-      closeAfterSelect: true,
-      dropdownParent: 'body',
-      rtl: true //changes to right to left
-    });
-    ts.on('change', handleCurrencyChange);
-    // Blur on add item
-    ts.on('item_add', () => {
-      ts.blur();
-    });
-
-    // Blur on enter/return
-    document.getElementById("mithqals").addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.target.blur();
-      }
-    });
-
-    // Blur on enter/return
-    document.getElementById("money").addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        e.target.blur();
-      }
-    });
-  });
-    
-
-    function handleCurrencyChange() {
-      const currency = document.getElementById("currencySelect").value;
-      if (currency === "CUSTOM") {
-        document.getElementById("customRateContainer").style.display = "block";
-      } else {
-        document.getElementById("customRateContainer").style.display = "none";
-      }
-      calculateMoneyFromMithqals();
-    }
-
-    //remove invalid chars and it allow one decimal and adds the commas
-    function formatMoney(input) {
-      let value = input.value.replace(/[^0-9.]/g, ""); //Removes invalid inputs
-      const parts = value.split(".");
-      if (parts.length > 2) {
-        value = parts[0] + "." + parts[1]; //keeping one decimal
-      }
-      const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      input.value = parts.length > 1 ? integerPart + "." + parts[1] : integerPart;
-    }
-
-    // For mithqals, we do the same formatting
-    function formatMithqals(input) {
-      formatMoney(input);
-    }
-
-    // If user changes custom rate
-    function customRateChanged() {
-      if (document.getElementById("currencySelect").value === "CUSTOM") {
-        calculateMoneyFromMithqals();
-      }
-    }
-
-    //  mithqals -> currency
-    async function calculateMoneyFromMithqals() {
-      const mithqals = parseFloat(document.getElementById("mithqals").value.replace(/,/g, ""));
-      const metalType = document.querySelector('input[name="metalType"]:checked').value;
-      const currency = document.getElementById("currencySelect").value;
-
-      if (isNaN(mithqals) || mithqals <= 0) {
-        document.getElementById("money").value = "";
-        return;
-      }
-
-      const metalPrice = await fetchMetalPrice(metalType);
-      const usdPricePerMithqal = metalPrice * 3.641667; // gold/silver price * mithqal in grams
-      let valueInUSD = mithqals * usdPricePerMithqal;
-
-      if (currency !== "USD") {
-        const exchangeRate = await fetchCurrencyRate(currency);
-        valueInUSD *= exchangeRate;
-      }
-
-      // Format final currency output
-      document.getElementById("money").value = valueInUSD.toLocaleString("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      });
-    }
-
-    //  currency -> mithqals
-    async function calculateMithqalsFromMoney() {
-      const money = parseFloat(document.getElementById("money").value.replace(/,/g, ""));
-      const metalType = document.querySelector('input[name="metalType"]:checked').value;
-      const currency = document.getElementById("currencySelect").value;
-
-      if (isNaN(money) || money <= 0) {
-        document.getElementById("mithqals").value = "";
-        return;
-      }
-
-      const metalPrice = await fetchMetalPrice(metalType);
-      const usdPricePerMithqal = metalPrice * 3.641667;
-      let moneyInUSD = money;
-
-      if (currency !== "USD") {
-        const exchangeRate = await fetchCurrencyRate(currency);
-        moneyInUSD /= exchangeRate;
-      }
-
-      const mithqals = moneyInUSD / usdPricePerMithqal;
-      document.getElementById("mithqals").value = mithqals.toLocaleString("en-US", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      });
-    }
-
-    // Get gold or silver price from gold-api.com
-    async function fetchMetalPrice(metalType) {
-      const url = 
-        (metalType === "gold") 
-          ? "https://api.gold-api.com/price/XAU" 
-          : "https://api.gold-api.com/price/XAG";
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        // price given in USD per oz then convert to grams for the gold
-        return data.price / 31.1035; 
-      } catch (error) {
-        console.error(`Unable to fetch ${metalType} price`, error);
-        return 0;
-      }
-    }
-    //check if custom if NOT custom then fetch API
-    async function fetchCurrencyRate(currency) {
-      if (currency === "CUSTOM") {
-        const customRateValue = parseFloat(
-          document.getElementById("customRate").value.replace(/,/g, "")
-        ) || 1;
-        return customRateValue; 
-      }
-      const url = `https://hexarate.paikama.co/api/rates/latest/USD?target=${currency}`;
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        return data.data.mid; 
-      } catch (error) {
-        console.error(`Unable to fetch rate for ${currency}`, error);
-        return 1; 
-      }
-    }
-
-    // Listen for users input
-    document.getElementById("mithqals").addEventListener("input", calculateMoneyFromMithqals);
-    document.getElementById("money").addEventListener("input", calculateMithqalsFromMoney);
-    document.querySelectorAll('input[name="metalType"]').forEach((radio) => {
-      radio.addEventListener("change", () => {
-        calculateMoneyFromMithqals();
-      });
-    });
-  </script>
 </body>
 </html>
